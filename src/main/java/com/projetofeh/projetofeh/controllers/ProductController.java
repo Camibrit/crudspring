@@ -28,27 +28,28 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity registerProducts(@RequestBody @Valid RequestProduct data) {
+    public ResponseEntity CreateProduct(@RequestBody @Valid RequestProduct data) {
         Product newProduct = new Product(data);
         repository.save(newProduct);
-        System.out.println(data);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("deu certo");
     }
 
-    @PutMapping
+
+    @PutMapping("/product/{id}")
     @Transactional
-    public ResponseEntity updateProduct(@RequestBody @Valid RequestProduct data) {
+    public ResponseEntity<Product> updateProduct(@PathVariable String id, @RequestBody @Valid RequestProduct data) {
         Optional<Product> optionalProduct = repository.findById(data.id());
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
             product.setName(data.name());
-            product.setPrice_in_cents(data.price_in_cents());
+            product.setPrice(data.price());
+            repository.save(product);
             return ResponseEntity.ok(product);
         } else {
             throw new EntityNotFoundException();
         }
     }
-        @DeleteMapping("/{id}")
+        @DeleteMapping("/product/{id}")
         @Transactional
         public ResponseEntity deleteProduct(@PathVariable String id){
             Optional<Product> optionalProduct = repository.findById(id);

@@ -2,8 +2,6 @@ package com.projetofeh.projetofeh.exception;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-
-
     @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
     public class ExceptionDTO {
         String message;

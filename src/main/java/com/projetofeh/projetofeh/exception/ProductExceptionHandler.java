@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+//Usadas juntas para tratar exceções e retornar repostas personalizadas.
 @RestControllerAdvice
 public class ProductExceptionHandler {
  @ExceptionHandler(EntityNotFoundException.class)
