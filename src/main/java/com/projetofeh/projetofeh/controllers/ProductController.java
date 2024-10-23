@@ -2,19 +2,16 @@ package com.projetofeh.projetofeh.controllers;
 
 
 import com.projetofeh.projetofeh.domain.Product;
-import com.projetofeh.projetofeh.domain.ProductRepository;
+import com.projetofeh.projetofeh.repository.ProductRepository;
 import com.projetofeh.projetofeh.domain.RequestProduct;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-
-import static org.springframework.util.ClassUtils.isPresent;
 
 @RestController
 @RequestMapping("/product")
